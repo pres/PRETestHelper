@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '9.0'
   s.requires_arc = true
   s.frameworks   = 'XCTest','UIKit','Foundation'
-  s.dependency 'FBSnapshotTestCase'
+  s.dependency 'FBSnapshotTestCase/Core'
 end
