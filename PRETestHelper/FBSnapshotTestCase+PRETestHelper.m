@@ -90,15 +90,7 @@
     }
 }
 
-- (void)snapshotCollectionCell:(UICollectionViewCell*)cell withIdentifier:(NSString*)identifer {
-	[self snapshotCell:cell withIdentifier:identifier];	
-}
-
-- (void)snapshotTableCell:(UITableViewCell*)cell withIdentifier:(NSString*)identifer {
-	[self snapshotCell:cell withIdentifier:identifier];
-}
-
-- (void)snapshotCell:(UIView*)cell withIdentifier:(NSString*)identifier {
+- (void)snapshotCollectionCell:(UICollectionViewCell*)cell withIdentifier:(NSString*)identifier {
     cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
@@ -113,7 +105,25 @@
     
     [view layoutIfNeeded];
     
-    FBSnapshotVerifyView(view, identifer);	
+    FBSnapshotVerifyView(view, identifier);
+}
+
+- (void)snapshotTableCell:(UITableViewCell*)cell withIdentifier:(NSString*)identifier {
+    cell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    UIView* cview = cell.contentView;
+    [view addSubview:cview];
+    [view.leftAnchor constraintEqualToAnchor:cview.leftAnchor].active = YES;
+    [view.topAnchor constraintEqualToAnchor:cview.topAnchor].active = YES;
+    [view.bottomAnchor constraintEqualToAnchor:cview.bottomAnchor].active = YES;
+    [view.rightAnchor constraintEqualToAnchor:cview.rightAnchor].active = YES;
+    [view.widthAnchor constraintEqualToConstant:320].active = YES;
+    
+    [view layoutIfNeeded];
+    
+    FBSnapshotVerifyView(view, identifier);
 }
 
 @end

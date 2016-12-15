@@ -1,6 +1,6 @@
 //
-//  FBSnapshotTestCase+PRETestHelper.h
-//  PRETestHelper
+//  PRETestHelperTests.m
+//  PRETestHelperTests
 //
 //  Copyright (c) 2016 Paul Steinhilber
 //  http://paulsteinhilber.de
@@ -24,18 +24,38 @@
 //  THE SOFTWARE.
 //
 
-#import <FBSnapshotTestCase/FBSnapshotTestCase.h>
 
-@interface FBSnapshotTestCase (PRETestHelper)
+#import <XCTest/XCTest.h>
 
-- (UITableViewCell*)loadTableCellFromNibNamed:(NSString*)nibName;
-- (UICollectionViewCell*)loadCollectionCellFromNibNamed:(NSString*)nibName;
+#import "FBSnapshotTestCase+PRETestHelper.h"
+#import "XCTestCase+PRETestHelper.h"
 
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap;
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap withIdentifier:(NSString*)identifier;
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier;
+@interface PRETestHelperTests : XCTestCase
 
-- (void)snapshotTableCell:(UITableViewCell*)cell withIdentifier:(NSString*)identifier;
-- (void)snapshotCollectionCell:(UICollectionViewCell*)cell withIdentifier:(NSString*)identifier;
+@end
+
+@implementation PRETestHelperTests
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)testExample {
+    // This is an example of a functional test case.
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+}
+
+- (void)testPerformanceExample {
+    // This is an example of a performance test case.
+    [self measureBlock:^{
+        // Put the code you want to measure the time of here.
+    }];
+}
 
 @end

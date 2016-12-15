@@ -1,6 +1,6 @@
 //
-//  FBSnapshotTestCase+PRETestHelper.h
-//  PRETestHelper
+//  ViewController.m
+//  PRETestHelperSample
 //
 //  Copyright (c) 2016 Paul Steinhilber
 //  http://paulsteinhilber.de
@@ -24,18 +24,24 @@
 //  THE SOFTWARE.
 //
 
-#import <FBSnapshotTestCase/FBSnapshotTestCase.h>
+#import "ViewController.h"
 
-@interface FBSnapshotTestCase (PRETestHelper)
+@interface ViewController ()
 
-- (UITableViewCell*)loadTableCellFromNibNamed:(NSString*)nibName;
-- (UICollectionViewCell*)loadCollectionCellFromNibNamed:(NSString*)nibName;
+@end
 
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap;
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap withIdentifier:(NSString*)identifier;
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier;
+@implementation ViewController
 
-- (void)snapshotTableCell:(UITableViewCell*)cell withIdentifier:(NSString*)identifier;
-- (void)snapshotCollectionCell:(UICollectionViewCell*)cell withIdentifier:(NSString*)identifier;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 @end

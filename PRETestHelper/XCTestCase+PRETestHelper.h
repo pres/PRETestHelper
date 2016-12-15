@@ -30,4 +30,8 @@
 
 - (void)waitForCondition:(Boolean (^)())condition;
 
+- (void)waitForExpectations;
+- (XCTestExpectation*)expectationForNotificationWithName:(NSString*)notification;
+- (void)waitForNotificationWithName:(NSString*)notification;
+
 @end

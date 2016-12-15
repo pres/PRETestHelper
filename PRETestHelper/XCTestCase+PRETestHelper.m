@@ -26,8 +26,6 @@
 
 #import "XCTestCase+PRETestHelper.h"
 
-@implementation XCTestCase (PRETestHelper)
-
 // helper is based on the following awesome blog posts
 // see: https://pspdfkit.com/blog/2016/running-ui-tests-with-ludicrous-speed/
 // see: http://bou.io/CTTRunLoopRunUntil.html
@@ -61,10 +59,33 @@ Boolean CTTRunLoopRunUntil(Boolean(^fulfilled_)(), Boolean polling_, CFTimeInter
     return fulfilled;
 }
 
-@implementation XCTestCase (LXTestCase)
+@implementation XCTestCase (PRETestHelper)
 
 - (void)waitForCondition:(Boolean (^)())condition {
-    CTTRunLoopRunUntil(condition, YES, 10.);
+    CTTRunLoopRunUntil(condition, YES, 30.);
+}
+
+- (void)waitForExpectations {
+    [self waitForExpectationsWithTimeout:30. handler:^(NSError *error) {
+        if (error) {
+            XCTFail(@"waitForExpectations – Timeout");
+        }
+    }];
+}
+
+- (XCTestExpectation*)expectationForNotificationWithName:(NSString*)notification {
+    __block __weak id observer;
+    __weak XCTestExpectation* notificationExpectation = [self expectationWithDescription:notification];
+    observer = [[NSNotificationCenter defaultCenter] addObserverForName:notification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification* note) {
+        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+        [notificationExpectation fulfill];
+    }];
+    return notificationExpectation;
+}
+
+- (void)waitForNotificationWithName:(NSString*)notification {
+    [self expectationForNotificationWithName:notification];
+    [self waitForExpectations];
 }
 
 @end

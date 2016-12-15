@@ -1,0 +1,12 @@
+PODS:
+  - FBSnapshotTestCase/Core (2.1.4)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase/Core
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+
+PODFILE CHECKSUM: cf1480c7863f1a3fe688d4eff85266e5b4599b99
+
+COCOAPODS: 1.1.1
