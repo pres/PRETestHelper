@@ -26,7 +26,7 @@
 
 #import <XCTest/XCTest.h>
 
-@interface XCTestCase (LXTestCase)
+@interface XCTestCase (PRETestHelper)
 
 - (void)waitForCondition:(Boolean (^)())condition;
 
