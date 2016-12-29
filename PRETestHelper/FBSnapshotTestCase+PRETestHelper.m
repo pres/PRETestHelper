@@ -49,32 +49,43 @@
 }
 
 - (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap {
-	[self snapshotController:controller wrappedInNavigationController:wrap withIdentifier:@""];
+    [self snapshotController:controller wrappedInNavigationController:wrap withIdentifier:@""];
 }
 
 - (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap withIdentifier:(NSString*)identifier {
-	[self snapshotController:controller wrappedInNavigationController:wrap delay:0 withIdentifier:identifier];
+    [self snapshotController:controller wrappedInNavigationController:wrap delay:0 withIdentifier:identifier];
 }
 
 - (void)snapshotController:(UIViewController *)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString *)identifier {
     [self snapshotController:controller wrappedInNavigationController:wrap delay:delay withIdentifier:identifier afterActions:nil];
 }
 
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier afterActions:(void (^)())actions {
+- (void)snapshotController:(UIViewController *)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString *)identifier afterActions:(void (^)())actions {
+    [self snapshotController:controller wrappedInNavigationController:wrap showBack:NO delay:delay withIdentifier:identifier afterActions:actions];
+}
+
+- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap showBack:(BOOL)back delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier afterActions:(void (^)())actions {
     
     UINavigationController* navigation;
     if (wrap) {
-        navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+        if (back) {
+            UIViewController* root = [UIViewController new];
+            root.navigationItem.title = @"Back";
+            navigation = [[UINavigationController alloc] initWithRootViewController:root];
+            [navigation pushViewController:controller animated:NO];
+        } else {
+            navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+        }
     } else {
         controller.view.frame = [UIScreen mainScreen].bounds;
     }
     
     [controller beginAppearanceTransition:YES animated:NO];
     [controller endAppearanceTransition];
-	
+    
     // make blinking cursor invisible
     [[UITextField appearance] setTintColor:[UIColor clearColor]];
-
+    
     if (actions) {
         actions();
     }
