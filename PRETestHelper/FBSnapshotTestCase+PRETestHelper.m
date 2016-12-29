@@ -25,6 +25,7 @@
 //
 
 #import "FBSnapshotTestCase+PRETestHelper.h"
+#import "XCTestCase+PRETestHelper.h"
 
 @implementation FBSnapshotTestCase (PRETestHelper)
 
@@ -91,15 +92,7 @@
     }
     
     if (delay > 0) {
-        XCTestExpectation* expectation = [self expectationWithDescription:@"snapshotController"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [expectation fulfill];
-        });
-        [self waitForExpectationsWithTimeout:10+delay handler:^(NSError * _Nullable error) {
-            if (error) {
-                XCTFail(@"timed out ...");
-            }
-        }];
+        [self waitForTimeInterval:delay];
     }
     
     if (navigation) {

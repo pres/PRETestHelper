@@ -89,14 +89,9 @@ Boolean CTTRunLoopRunUntil(Boolean(^fulfilled_)(), Boolean polling_, CFTimeInter
 }
 
 - (void)waitForTimeInterval:(NSTimeInterval)delay {
-    XCTestExpectation* expectation = [self expectationWithDescription:@"waitForTimeInterval"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [expectation fulfill];
-    });
-    [self waitForExpectationsWithTimeout:10+delay handler:^(NSError * _Nullable error) {
-        if (error) {
-            XCTFail(@"timed out ...");
-        }
+    NSDate* start = [NSDate new];
+    [self waitForCondition:^Boolean{
+        return [start timeIntervalSinceNow] < -delay;
     }];
 }
 
