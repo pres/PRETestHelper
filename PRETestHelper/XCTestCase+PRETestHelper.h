@@ -33,5 +33,6 @@
 - (void)waitForExpectations;
 - (XCTestExpectation*)expectationForNotificationWithName:(NSString*)notification;
 - (void)waitForNotificationWithName:(NSString*)notification;
+- (void)waitForTimeInterval:(NSTimeInterval)delay;
 
 @end

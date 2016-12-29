@@ -56,7 +56,11 @@
 	[self snapshotController:controller wrappedInNavigationController:wrap delay:0 withIdentifier:identifier];
 }
 
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier {
+- (void)snapshotController:(UIViewController *)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString *)identifier {
+    [self snapshotController:controller wrappedInNavigationController:wrap delay:delay withIdentifier:identifier afterActions:nil];
+}
+
+- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier afterActions:(void (^)())actions {
     
     UINavigationController* navigation;
     if (wrap) {
@@ -70,6 +74,10 @@
 	
     // make blinking cursor invisible
     [[UITextField appearance] setTintColor:[UIColor clearColor]];
+
+    if (actions) {
+        actions();
+    }
     
     if (delay > 0) {
         XCTestExpectation* expectation = [self expectationWithDescription:@"snapshotController"];
