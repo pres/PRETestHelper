@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  PRETestHelperSample
 //
-//  Copyright (c) 2016 Paul Steinhilber
+//  Copyright (c) 2016-17 Paul Steinhilber
 //  http://paulsteinhilber.de
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
