@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PRETestHelper"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Collection of Objective-C categories trying to simplify writing tests for iOS."
   s.homepage     = "https://github.com/pres/PRETestHelper"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
