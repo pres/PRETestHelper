@@ -73,6 +73,10 @@ Boolean CTTRunLoopRunUntil(Boolean(^fulfilled_)(), Boolean polling_, CFTimeInter
     }];
 }
 
+- (XCTestExpectation*)newExpectation {
+    return [self expectationWithDescription:@"defaultExpectation"];
+}
+
 - (XCTestExpectation*)expectationForNotificationWithName:(NSString*)notification {
     __block __weak id observer;
     __weak XCTestExpectation* notificationExpectation = [self expectationWithDescription:notification];
