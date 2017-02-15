@@ -29,11 +29,13 @@
 @interface XCTestCase (PRETestHelper)
 
 - (void)waitForCondition:(Boolean (^)())condition;
+- (void)waitForTimeInterval:(NSTimeInterval)delay;
 
 - (void)waitForExpectations;
 - (XCTestExpectation*)newExpectation;
 - (XCTestExpectation*)expectationForNotificationWithName:(NSString*)notification;
 - (void)waitForNotificationWithName:(NSString*)notification;
-- (void)waitForTimeInterval:(NSTimeInterval)delay;
+
+- (void)assertNoError:(NSError*)error;
 
 @end

@@ -65,6 +65,13 @@ Boolean CTTRunLoopRunUntil(Boolean(^fulfilled_)(), Boolean polling_, CFTimeInter
     CTTRunLoopRunUntil(condition, YES, 30.);
 }
 
+- (void)waitForTimeInterval:(NSTimeInterval)delay {
+    NSDate* start = [NSDate new];
+    [self waitForCondition:^Boolean{
+        return [start timeIntervalSinceNow] < -delay;
+    }];
+}
+
 - (void)waitForExpectations {
     [self waitForExpectationsWithTimeout:30. handler:^(NSError *error) {
         if (error) {
@@ -92,11 +99,8 @@ Boolean CTTRunLoopRunUntil(Boolean(^fulfilled_)(), Boolean polling_, CFTimeInter
     [self waitForExpectations];
 }
 
-- (void)waitForTimeInterval:(NSTimeInterval)delay {
-    NSDate* start = [NSDate new];
-    [self waitForCondition:^Boolean{
-        return [start timeIntervalSinceNow] < -delay;
-    }];
+- (void)assertNoError:(NSError*)error {
+    XCTAssertFalse(error, @"ERROR: %@", error);
 }
 
 @end
