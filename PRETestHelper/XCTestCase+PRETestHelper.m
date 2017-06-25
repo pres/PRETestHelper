@@ -30,7 +30,7 @@
 // see: https://pspdfkit.com/blog/2016/running-ui-tests-with-ludicrous-speed/
 // see: http://bou.io/CTTRunLoopRunUntil.html
 
-Boolean CTTRunLoopRunUntil(Boolean(^fulfilled_)(), Boolean polling_, CFTimeInterval timeout_) {
+Boolean CTTRunLoopRunUntil(Boolean(^fulfilled_)(void), Boolean polling_, CFTimeInterval timeout_) {
     // loop observer callback
     __block Boolean fulfilled = NO;
     void (^beforeWaiting) (CFRunLoopObserverRef observer, CFRunLoopActivity activity) =
@@ -61,7 +61,7 @@ Boolean CTTRunLoopRunUntil(Boolean(^fulfilled_)(), Boolean polling_, CFTimeInter
 
 @implementation XCTestCase (PRETestHelper)
 
-- (void)waitForCondition:(Boolean (^)())condition {
+- (void)waitForCondition:(Boolean (^)(void))condition {
     CTTRunLoopRunUntil(condition, YES, 30.);
 }
 

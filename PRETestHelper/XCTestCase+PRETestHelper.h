@@ -28,7 +28,7 @@
 
 @interface XCTestCase (PRETestHelper)
 
-- (void)waitForCondition:(Boolean (^)())condition;
+- (void)waitForCondition:(Boolean (^)(void))condition;
 - (void)waitForTimeInterval:(NSTimeInterval)delay;
 
 - (void)waitForExpectations;

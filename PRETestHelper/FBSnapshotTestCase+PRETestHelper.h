@@ -34,8 +34,8 @@
 - (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap;
 - (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap withIdentifier:(NSString*)identifier;
 - (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier;
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier afterActions:(void (^)())actions;
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap showBack:(BOOL)back delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier afterActions:(void (^)())actions;
+- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier afterActions:(void (^)(void))actions;
+- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap showBack:(BOOL)back delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier afterActions:(void (^)(void))actions;
 
 - (void)snapshotTableCell:(UITableViewCell*)cell withIdentifier:(NSString*)identifier;
 - (void)snapshotCollectionCell:(UICollectionViewCell*)cell withIdentifier:(NSString*)identifier;

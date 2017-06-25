@@ -61,11 +61,11 @@
     [self snapshotController:controller wrappedInNavigationController:wrap delay:delay withIdentifier:identifier afterActions:nil];
 }
 
-- (void)snapshotController:(UIViewController *)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString *)identifier afterActions:(void (^)())actions {
+- (void)snapshotController:(UIViewController *)controller wrappedInNavigationController:(BOOL)wrap delay:(NSTimeInterval)delay withIdentifier:(NSString *)identifier afterActions:(void (^)(void))actions {
     [self snapshotController:controller wrappedInNavigationController:wrap showBack:NO delay:delay withIdentifier:identifier afterActions:actions];
 }
 
-- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap showBack:(BOOL)back delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier afterActions:(void (^)())actions {
+- (void)snapshotController:(UIViewController*)controller wrappedInNavigationController:(BOOL)wrap showBack:(BOOL)back delay:(NSTimeInterval)delay withIdentifier:(NSString*)identifier afterActions:(void (^)(void))actions {
     
     UINavigationController* navigation;
     if (wrap) {
